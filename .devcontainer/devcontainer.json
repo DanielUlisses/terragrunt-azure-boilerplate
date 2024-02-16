@@ -1,32 +1,57 @@
 {
-  "image": "r00ts/devcontainers-azure-terraform:1.3.10",
-  "customizations": {
-    // Configure properties specific to VS Code.
-    "vscode": {
-      "settings": {
-        "terminal.integrated.shell.linux": "/bin/zsh",
-        "editor.tabSize": 2
-      },
-      // Add the IDs of extensions you want installed when the container is created.
-      "extensions": [
-        "ms-azure-devops.azure-pipelines",
-        "4ops.terraform",
-        "hashicorp.hcl",
-        "hashicorp.terraform",
-        "1nVitr0.blocksort",
-        "ms-vscode.makefile-tools",
-        "streetsidesoftware.code-spell-checker",
-        "EditorConfig.EditorConfig",
-        "sleistner.vscode-fileutils",
-        "waderyan.gitblame",
-        "SirTori.indenticator",
-        "thayalangr.vscode-terminals-pro",
-        "shardulm94.trailing-spaces",
-        "redhat.vscode-yaml",
-        "Codeium.codeium",
-        "github.vscode-github-actions"
-      ]
-    }
-  },
-  "remoteUser": "vscode"
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+    //"image": "mcr.microsoft.com/devcontainers/python:3.12", // use for python image
+    "features": {
+        "ghcr.io/devcontainers/features/terraform:1": {
+            "version": "1.3.10",
+            "terragrunt": "0.45.4",
+            "tflint": "0.50.2",
+            "installTerraformDocs": true,
+            "InstallTFsec": true,
+            "installSentinel": false
+            //"httpProxy": "proxystring"
+        },
+        "ghcr.io/devcontainers/features/go:1": {
+            "version": "1.22.0",
+            "golangciLintVersion": "1.56.0"
+        }
+        // ,"ghcr.io/devcontainers/features/aws-cli:1": {}
+        ,
+        "ghcr.io/devcontainers/features/azure-cli:1": {}
+    },
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/zsh",
+                "editor.tabSize": 4
+            },
+            // Add the IDs of extensions you want installed when the container is created.
+            "extensions": [
+                //"hashicorp.terraform", //- added by feature terraform
+                //"ms-azuretools.vscode-azureterraform", //- added by feature terraform
+                //"golang.Go - added by feature go
+                //"AmazonWebServices.aws-toolkit-vscode, //- added by feature aws-cli
+                //"ms-vscode.azurecli, //- added by feature azure-cli
+                "sleistner.vscode-fileutils",
+                "streetsidesoftware.code-spell-checker",
+                "EditorConfig.EditorConfig",
+                "SirTori.indenticator",
+                "hashicorp.hcl",
+                "ms-vscode.makefile-tools",
+                "Codeium.codeium",
+                "github.vscode-github-actions"
+                //Optional extensions by project:
+                // "waderyan.gitblame",
+                // "redhat.vscode-yaml",
+                // "ms-azure-devops.azure-pipelines",
+                // "thayalangr.vscode-terminals-pro",
+                // "shardulm94.trailing-spaces",
+                // "1nVitr0.blocksort",
+                // "ms-python.python",
+                // "ms-python.vscode-pylance",
+            ]
+        }
+    },
+    "remoteUser": "vscode"
 }
